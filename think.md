@@ -79,3 +79,142 @@ premium lock icon相关企业
             seen.add(v)
         missing = dup - (S - T)          # 由总和差算出缺失数
         return [dup, missing]
+
+
+eg ：
+---
+id: 001
+title: 两数之和
+tags: [数组, 哈希表]
+difficulty: Easy
+date: 2025-11-18
+---
+
+## 1. 题干 & 链接
+- 题目描述：…（复制官方题干或贴截图）
+- 链接：https://leetcode.cn/problems/two-sum/
+
+## 2. 思路快照
+- 10 秒思路：暴力枚举 → O(n²)
+- 优化方向：用哈希表存已经看过的数 → O(n)
+
+## 3. 详细推演
+1. 画图/举例：nums = [2,7,11,15], target = 9  
+   手绘草图：![手绘草图](assets/001_sketch.jpg)
+2. 伪代码：
+   ```text
+   map = {}
+   for i, x in enumerate(nums):
+       if target-x in map:
+           return [map[target-x], i]
+       map[x] = i
+
+
+
+---
+id: 2154
+title: 
+tags: [数组, 哈希表]
+difficulty: Easy
+date: 2025-11-18
+---
+
+## 1. 题干 & 链接
+- 题目描述：给你一个整数数组 nums ，另给你一个整数 original ，这是需要在 nums 中搜索的第一个数字。
+
+接下来，你需要按下述步骤操作：
+
+如果在 nums 中找到 original ，将 original 乘以 2 ，得到新 original（即，令 original = 2 * original）。
+否则，停止这一过程。
+只要能在数组中找到新 original ，就对新 original 继续 重复 这一过程。
+返回 original 的 最终 值。
+- 链接：https://leetcode.cn/problems/two-sum/
+
+## 2. 思路快照
+- 直接贪心就ok
+
+## 3. 详细推演
+1. 画图/举例：nums = [2,7,11,15], target = 9  
+   手绘草图：![手绘草图](assets/001_sketch.jpg)
+2. 伪代码：
+   ```text
+   class Solution:
+    def findFinalValue(self, nums: List[int], original: int) -> int:
+        m=max(nums)
+        n=len(nums)
+        while original<=m:
+            if original in nums:
+                original=original*2
+            else:
+                break
+        return original
+
+
+---
+id: 1365
+title: 
+tags: [数组, 哈希表]
+difficulty: Easy
+date: 2025-11-18
+---
+
+## 1. 题干 & 链接
+- 题目描述：给你一个数组 nums，对于其中每个元素 nums[i]，请你统计数组中比它小的所有数字的数目。
+
+换而言之，对于每个 nums[i] 你必须计算出有效的 j 的数量，其中 j 满足 j != i 且 nums[j] < nums[i] 。
+
+以数组形式返回答案。
+- 链接：https://leetcode.cn/problems/two-sum/
+
+## 2. 思路快照
+- 10 秒思路：暴力枚举 → O(n²)
+- 优化方向：用哈希表存已经看过的数 → O(n)
+
+## 3. 详细推演
+1. 画图/举例：nums = [2,7,11,15], target = 9  
+   手绘草图：![手绘草图](assets/001_sketch.jpg)
+2. 伪代码：
+   ```class Solution:
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+        n=len(nums)
+        a=[]
+        for i in nums:
+            cnt=0
+            for j in nums:
+                if i>j:
+                    cnt+=1
+            a.append(cnt)
+        return a
+
+
+---
+id: 448
+title: 
+tags: [数组, 哈希表]
+difficulty: Easy
+date: 2025-11-18
+---
+
+## 1. 题干 & 链接
+- 给你一个含 n 个整数的数组 nums ，其中 nums[i] 在区间 [1, n] 内。请你找出所有在 [1, n] 范围内但没有出现在 nums 中的数字，并以数组的形式返回结果。。
+
+以数组形式返回答案。
+- 链接：https://leetcode.cn/problems/two-sum/
+
+## 2. 思路快照
+- 10 秒思路：暴力枚举 → O(n²)
+- 优化方向：用哈希表存已经看过的数 → O(n)
+
+## 3. 详细推演
+1. 画图/举例：nums = [2,7,11,15], target = 9  
+   手绘草图：![手绘草图](assets/001_sketch.jpg)
+2. 伪代码：
+   ```class Solution:
+    def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
+        n=len(nums)
+        seen=set(nums)
+        a=[]
+        for i in range(1,n+1):
+            if i not in seen:
+                a.append(i)
+        return a
